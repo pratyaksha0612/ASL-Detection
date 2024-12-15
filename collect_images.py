@@ -3,7 +3,7 @@ import cv2
 
 # Constants
 DATA_DIR = './data'
-SIGN_LANGUAGES = ["ASL"]  # Collect data only for American Sign Language
+SIGN_LANGUAGES = ["ASL"]  # Collect data for American Sign Language
 ALPHABETS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"]  
 CLASSES = [f"{letter}_Left" for letter in ALPHABETS] + [f"{letter}_Right" for letter in ALPHABETS]  # Add left and right hand variations
 DATASET_SIZE = 100  # Number of images per class

@@ -13,7 +13,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 # Directory and Classes
-DATA_DIR = './data/ASL'  # Use the ASL folder only
+DATA_DIR = './data/ASL'  # Use the ASL folder
 ALPHABETS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"]
 CLASSES = [f"{letter}_Left" for letter in ALPHABETS] + [f"{letter}_Right" for letter in ALPHABETS]
 
