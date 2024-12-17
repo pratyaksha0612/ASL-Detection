@@ -16,3 +16,12 @@ By leveraging MediaPipe, OpenCV, and scikit-learn libraries, the project demonst
 3. _Model Training:_ Train the Random Forest Classifier on preprocessed data and save the model.
 4._ Real-Time Prediction:_ Feed webcam video frames into the model to predict gestures in real-time.
 5. _Visualization:_ Display bounding boxes and gesture labels on the video stream.
+
+DATA COLLECTION:
+![2](https://github.com/user-attachments/assets/8c667b62-ebd1-4db6-a6d2-5bcf96357101)
+
+DATASET LANDMARKS:
+![A_Right_Right](https://github.com/user-attachments/assets/56569088-d515-4181-83d4-1ffb2465e9a8)
+
+REAL-TIME GESTURE DETECTION:
+![Screenshot 2024-12-17 223620](https://github.com/user-attachments/assets/73a9d74c-e78f-4cb0-abb0-8078c46755c2)
