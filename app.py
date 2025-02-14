@@ -12,7 +12,7 @@ cap = cv2.VideoCapture(0)  # Open webcam
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # Reduce resolution for better performance
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
-prediction_text = "Waiting..."
+prediction_text = "....."
 translator = Translator()  # Initialize translator
 last_prediction_time = 0  # Track last prediction time
 selected_language = "en"  # Default language is English
