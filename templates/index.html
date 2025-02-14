@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #e3f2fd;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #0d47a1;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .video-container {
+            border: 3px solid #0d47a1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .prediction {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0d47a1;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sign Language Translator</h1>
+    <div class="container">
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" width="500">
+        </div>
+        <div class="prediction">
+            Predicted Text: <span id="predicted-text">Waiting...</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="language-select">Select Language:</label>
+        <select id="language-select" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+    </div>
+
+    <script>
+        function updatePrediction() {
+            fetch('/predict')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('predicted-text').innerText = data.prediction;
+                });
+        }
+
+        function changeLanguage() {
+            let selectedLang = document.getElementById('language-select').value;
+            fetch('/change_language', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ language: selectedLang })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            });
+        }
+
+        setInterval(updatePrediction, 500);
+    </script>
+
+</body>
+</html>

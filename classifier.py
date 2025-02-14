@@ -105,3 +105,25 @@ def classify_gestures():
 
 if __name__ == "__main__":
     classify_gestures()
+
+
+def get_prediction(frame):
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    results = hands.process(frame_rgb)
+
+    prediction_text = "Waiting..."
+
+    if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+            data_point = preprocess_landmarks(hand_landmarks.landmark)
+
+            try:
+                prediction = model.predict([data_point])
+                predicted_label = label_encoder.inverse_transform(prediction)[0]
+                prediction_text = predicted_label
+            except:
+                prediction_text = "Error in prediction"
+
+            mp.solutions.drawing_utils.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+    return frame, prediction_text
